@@ -443,10 +443,10 @@ nothrow:
  */
 
 // For DLL export
-int  dSafeNormalize3(dVector3 a);
-int  dSafeNormalize4(dVector4 a);
-void dNormalize3(dVector3 a); // Potentially asserts on zero vec
-void dNormalize4(dVector4 a); // Potentially asserts on zero vec
+int  dSafeNormalize3(ref dVector3 a);
+int  dSafeNormalize4(ref dVector4 a);
+void dNormalize3(ref dVector3 a); // Potentially asserts on zero vec
+void dNormalize4(ref dVector4 a); // Potentially asserts on zero vec
 
 /*
  * given a unit length "normal" vector n, generate vectors p and q vectors
@@ -456,6 +456,6 @@ void dNormalize4(dVector4 a); // Potentially asserts on zero vec
  * q wont be.
  */
 
-void dPlaneSpace(in dVector3 n, dVector3 p, dVector3 q);
+void dPlaneSpace(in ref dVector3 n, ref dVector3 p, ref dVector3 q);
 /* Makes sure the matrix is a proper rotation */
-void dOrthogonalizeR(dMatrix3 m);
+void dOrthogonalizeR(ref dMatrix3 m);

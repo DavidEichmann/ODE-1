@@ -65,7 +65,7 @@ void* dGeomTriMeshDataGet(dTriMeshDataID g, int data_id);
  * accurate collision response. These functions get and set that transform.
  * It is stored per geom instance, rather than per dTriMeshDataID.
  */
-void dGeomTriMeshSetLastTransform(dGeomID g, dMatrix4 last_trans);
+void dGeomTriMeshSetLastTransform(dGeomID g, ref dMatrix4 last_trans);
 dReal* dGeomTriMeshGetLastTransform(dGeomID g);
 
 /*
@@ -194,7 +194,7 @@ dTriMeshDataID dGeomTriMeshGetTriMeshDataID(dGeomID g);
  * Gets a triangle.
  */
 void dGeomTriMeshGetTriangle(
-    dGeomID g, int Index, dVector3* v0, dVector3* v1, dVector3* v2
+    dGeomID g, int Index, ref dVector3* v0, ref dVector3* v1, ref dVector3* v2
 );
 
 /*
@@ -202,7 +202,7 @@ void dGeomTriMeshGetTriangle(
  * coordinates.
  */
 void dGeomTriMeshGetPoint(
-    dGeomID g, int Index, dReal u, dReal v, dVector3 Out
+    dGeomID g, int Index, dReal u, dReal v, ref dVector3 Out
 );
 
 /*
@@ -210,7 +210,7 @@ void dGeomTriMeshGetPoint(
 This is how the strided data works:
 
 struct StridedVertex{
-    dVector3 Vertex;
+    ref dVector3 Vertex;
     // Userdata
 };
 int VertexStride = sizeof(StridedVertex);

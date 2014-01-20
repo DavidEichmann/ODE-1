@@ -150,7 +150,7 @@ void dGeomSetPosition(dGeomID geom, dReal x, dReal y, dReal z);
  * @sa dBodySetRotation
  * @ingroup collide
  */
-void dGeomSetRotation(dGeomID geom, in dMatrix3 R);
+void dGeomSetRotation(dGeomID geom, in ref dMatrix3 R);
 
 
 /**
@@ -166,7 +166,7 @@ void dGeomSetRotation(dGeomID geom, in dMatrix3 R);
  * @sa dBodySetQuaternion
  * @ingroup collide
  */
-void dGeomSetQuaternion(dGeomID geom, in dQuaternion Q);
+void dGeomSetQuaternion(dGeomID geom, in ref dQuaternion Q);
 
 
 /**
@@ -195,7 +195,7 @@ const(dReal)* dGeomGetPosition(dGeomID geom);
  * @param pos   a copy of the geom position
  * @sa dGeomGetPosition
  */
-void dGeomCopyPosition(dGeomID geom, dVector3 pos);
+void dGeomCopyPosition(dGeomID geom, ref dVector3 pos);
 
 
 /**
@@ -230,7 +230,7 @@ const(dReal)* dGeomGetRotation(dGeomID geom);
  * @sa dGeomGetRotation
  * @ingroup collide
  */
-void dGeomCopyRotation(dGeomID geom, dMatrix3 R);
+void dGeomCopyRotation(dGeomID geom, ref dMatrix3 R);
 
 
 /**
@@ -246,7 +246,7 @@ void dGeomCopyRotation(dGeomID geom, dMatrix3 R);
  * @sa dBodyGetQuaternion
  * @ingroup collide
  */
-void dGeomGetQuaternion(dGeomID geom, dQuaternion result);
+void dGeomGetQuaternion(dGeomID geom, ref dQuaternion result);
 
 
 /**
@@ -472,7 +472,7 @@ int dGeomLowLevelControl(dGeomID geom, int controlClass, int controlCode, void* 
  * @ingroup collide
  * @param result will contain the result.
  */
-void dGeomGetRelPointPos(dGeomID geom, dReal px, dReal py, dReal pz, dVector3 result);
+void dGeomGetRelPointPos(dGeomID geom, dReal px, dReal py, dReal pz, ref dVector3 result);
 
 /**
  * @brief takes a point in global coordinates and returns
@@ -486,7 +486,7 @@ void dGeomGetRelPointPos(dGeomID geom, dReal px, dReal py, dReal pz, dVector3 re
  * @ingroup collide
  * @param result will contain the result.
  */
-void dGeomGetPosRelPoint(dGeomID geom, dReal px, dReal py, dReal pz, dVector3 result);
+void dGeomGetPosRelPoint(dGeomID geom, dReal px, dReal py, dReal pz, ref dVector3 result);
 
 /**
  * @brief Convert from geom-local to world coordinates.
@@ -497,7 +497,7 @@ void dGeomGetPosRelPoint(dGeomID geom, dReal px, dReal py, dReal pz, dVector3 re
  * @ingroup collide
  * @param result will contain the result.
  */
-void dGeomVectorToWorld(dGeomID geom, dReal px, dReal py, dReal pz, dVector3 result);
+void dGeomVectorToWorld(dGeomID geom, dReal px, dReal py, dReal pz, ref dVector3 result);
 
 /**
  * @brief Convert from world to geom-local coordinates.
@@ -508,7 +508,7 @@ void dGeomVectorToWorld(dGeomID geom, dReal px, dReal py, dReal pz, dVector3 res
  * @ingroup collide
  * @param result will contain the result.
  */
-void dGeomVectorFromWorld(dGeomID geom, dReal px, dReal py, dReal pz, dVector3 result);
+void dGeomVectorFromWorld(dGeomID geom, dReal px, dReal py, dReal pz, ref dVector3 result);
 
 
 /* ************************************************************************ */
@@ -545,7 +545,7 @@ void dGeomSetOffsetPosition(dGeomID geom, dReal x, dReal y, dReal z);
  * @param R the new rotation matrix.
  * @ingroup collide
  */
-void dGeomSetOffsetRotation(dGeomID geom, in dMatrix3 R);
+void dGeomSetOffsetRotation(dGeomID geom, in ref dMatrix3 R);
 
 
 /**
@@ -561,7 +561,7 @@ void dGeomSetOffsetRotation(dGeomID geom, in dMatrix3 R);
  * @param Q the new rotation.
  * @ingroup collide
  */
-void dGeomSetOffsetQuaternion(dGeomID geom, in dQuaternion Q);
+void dGeomSetOffsetQuaternion(dGeomID geom, in ref dQuaternion Q);
 
 
 /**
@@ -597,7 +597,7 @@ void dGeomSetOffsetWorldPosition(dGeomID geom, dReal x, dReal y, dReal z);
  * @param R the new rotation matrix.
  * @ingroup collide
  */
-void dGeomSetOffsetWorldRotation(dGeomID geom, in dMatrix3 R);
+void dGeomSetOffsetWorldRotation(dGeomID geom, in ref dMatrix3 R);
 
 
 /**
@@ -614,7 +614,7 @@ void dGeomSetOffsetWorldRotation(dGeomID geom, in dMatrix3 R);
  * @param Q the new rotation.
  * @ingroup collide
  */
-void dGeomSetOffsetWorldQuaternion(dGeomID geom, in dQuaternion);
+void dGeomSetOffsetWorldQuaternion(dGeomID geom, in ref dQuaternion);
 
 
 /**
@@ -677,7 +677,7 @@ const(dReal)* dGeomGetOffsetPosition(dGeomID geom);
  * @param pos    returns the offset position
  * @ingroup collide
  */
-void dGeomCopyOffsetPosition(dGeomID geom, dVector3 pos);
+void dGeomCopyOffsetPosition(dGeomID geom, ref dVector3 pos);
 
 
 /**
@@ -708,7 +708,7 @@ const(dReal)* dGeomGetOffsetRotation(dGeomID geom);
  * @param R      returns the rotation matrix.
  * @ingroup collide
  */
-void dGeomCopyOffsetRotation(dGeomID geom, dMatrix3 R);
+void dGeomCopyOffsetRotation(dGeomID geom, ref dMatrix3 R);
 
 
 /**
@@ -721,7 +721,7 @@ void dGeomCopyOffsetRotation(dGeomID geom, dMatrix3 R);
  * @param result a copy of the rotation quaternion.
  * @ingroup collide
  */
-void dGeomGetOffsetQuaternion(dGeomID geom, dQuaternion result);
+void dGeomGetOffsetQuaternion(dGeomID geom, ref dQuaternion result);
 
 
 /* ************************************************************************ */
@@ -1008,7 +1008,7 @@ void dGeomBoxSetLengths(dGeomID box, dReal lx, dReal ly, dReal lz);
  * @sa dGeomBoxSetLengths
  * @ingroup collide_box
  */
-void dGeomBoxGetLengths(dGeomID box, dVector3 result);
+void dGeomBoxGetLengths(dGeomID box, ref dVector3 result);
 
 
 /**
@@ -1028,7 +1028,7 @@ dReal dGeomBoxPointDepth(dGeomID box, dReal x, dReal y, dReal z);
 
 dGeomID dCreatePlane(dSpaceID space, dReal a, dReal b, dReal c, dReal d);
 void dGeomPlaneSetParams(dGeomID plane, dReal a, dReal b, dReal c, dReal d);
-void dGeomPlaneGetParams(dGeomID plane, dVector4 result);
+void dGeomPlaneGetParams(dGeomID plane, ref dVector4 result);
 dReal dGeomPlanePointDepth(dGeomID plane, dReal x, dReal y, dReal z);
 
 dGeomID dCreateCapsule (dSpaceID space, dReal radius, dReal length);
@@ -1051,7 +1051,7 @@ dGeomID dCreateRay(dSpaceID space, dReal length);
 void dGeomRaySetLength(dGeomID ray, dReal length);
 dReal dGeomRayGetLength(dGeomID ray);
 void dGeomRaySet(dGeomID ray, dReal px, dReal py, dReal pz, dReal dx, dReal dy, dReal dz);
-void dGeomRayGet(dGeomID ray, dVector3 start, dVector3 dir);
+void dGeomRayGet(dGeomID ray, ref dVector3 start, ref dVector3 dir);
 
 /*
  * Set/get ray flags that influence ray collision detection.
@@ -1440,20 +1440,20 @@ dHeightfieldDataID dGeomHeightfieldGetHeightfieldData(dGeomID g);
 /* utility functions */
 
 void dClosestLineSegmentPoints(
-    in dVector3 a1, in dVector3 a2,
-    in dVector3 b1, in dVector3 b2,
-    dVector3 cp1, dVector3 cp2
+    in ref dVector3 a1, in ref dVector3 a2,
+    in ref dVector3 b1, in ref dVector3 b2,
+    ref dVector3 cp1, ref dVector3 cp2
 );
 
 int dBoxTouchesBox(
-    in dVector3 _p1, in dMatrix3 R1, in dVector3 side1, in dVector3 _p2,
-    in dMatrix3 R2, in dVector3 side2
+    in ref dVector3 _p1, in ref dMatrix3 R1, in ref dVector3 side1, in ref dVector3 _p2,
+    in ref dMatrix3 R2, in ref dVector3 side2
 );
 
 // The meaning of flags parameter is the same as in dCollide()
 int dBoxBox(
-    in dVector3 p1, in dMatrix3 R1, in dVector3 side1, in dVector3 p2,
-    in dMatrix3 R2, in dVector3 side2, dVector3 normal, dReal* depth,
+    in ref dVector3 p1, in ref dMatrix3 R1, in ref dVector3 side1, in ref dVector3 p2,
+    in ref dMatrix3 R2, in ref dVector3 side2, ref dVector3 normal, dReal* depth,
     int* return_code, int flags, dContactGeom* contact, int skip
 );
 

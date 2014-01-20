@@ -49,7 +49,7 @@ alias void function(void* data, dGeomID o1, dGeomID o2) dNearCallback;
 
 dSpaceID dSimpleSpaceCreate(dSpaceID space);
 dSpaceID dHashSpaceCreate(dSpaceID space);
-dSpaceID dQuadTreeSpaceCreate(dSpaceID space, in dVector3 Center, in dVector3 Extents, int Depth);
+dSpaceID dQuadTreeSpaceCreate(dSpaceID space, in ref dVector3 Center, in ref dVector3 Extents, int Depth);
 
 
 // SAP

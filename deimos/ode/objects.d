@@ -81,7 +81,7 @@ void dWorldSetGravity(dWorldID, dReal x, dReal y, dReal z);
  * @brief Get the gravity vector for a given world.
  * @ingroup world
  */
-void dWorldGetGravity(dWorldID, dVector3 gravity);
+void dWorldGetGravity(dWorldID, ref dVector3 gravity);
 
 
 /**
@@ -371,7 +371,7 @@ int dWorldQuickStep(dWorldID w, dReal stepsize);
 * properties of the world.
 */
 void dWorldImpulseToForce(
-    dWorldID, dReal stepsize, dReal ix, dReal iy, dReal iz, dVector3 force
+    dWorldID, dReal stepsize, dReal ix, dReal iy, dReal iz, ref dVector3 force
 );
 
 
@@ -897,7 +897,7 @@ void dBodySetPosition(dBodyID, dReal x, dReal y, dReal z);
  * if the new configuration is inconsistent with the joints/constraints
  * that are present.
  */
-void dBodySetRotation(dBodyID, in dMatrix3 R);
+void dBodySetRotation(dBodyID, in ref dMatrix3 R);
 
 /**
  * @brief Set the orientation of a body.
@@ -907,7 +907,7 @@ void dBodySetRotation(dBodyID, in dMatrix3 R);
  * if the new configuration is inconsistent with the joints/constraints
  * that are present.
  */
-void dBodySetQuaternion(dBodyID, in dQuaternion q);
+void dBodySetQuaternion(dBodyID, in ref dQuaternion q);
 
 /**
  * @brief Set the linear velocity of a body.
@@ -940,7 +940,7 @@ const(dReal)* dBodyGetPosition(dBodyID);
  * @param pos   a copy of the body position
  * @sa dBodyGetPosition
  */
-void dBodyCopyPosition(dBodyID dbody, dVector3 pos);
+void dBodyCopyPosition(dBodyID dbody, ref dVector3 pos);
 
 
 /**
@@ -958,7 +958,7 @@ const(dReal)* dBodyGetRotation(dBodyID);
  * @param R      a copy of the rotation matrix
  * @sa dBodyGetRotation
  */
-void dBodyCopyRotation(dBodyID, dMatrix3 R);
+void dBodyCopyRotation(dBodyID, ref dMatrix3 R);
 
 
 /**
@@ -976,7 +976,7 @@ const(dReal)* dBodyGetQuaternion(dBodyID);
  * @param quat  a copy of the orientation quaternion
  * @sa dBodyGetQuaternion
  */
-void dBodyCopyQuaternion(dBodyID dbody, dQuaternion quat);
+void dBodyCopyQuaternion(dBodyID dbody, ref dQuaternion quat);
 
 
 /**
@@ -1103,14 +1103,14 @@ void dBodySetTorque(dBodyID b, dReal x, dReal y, dReal z);
  * @ingroup bodies
  * @param result will contain the result.
  */
-void dBodyGetRelPointPos(dBodyID, dReal px, dReal py, dReal pz,dVector3 result);
+void dBodyGetRelPointPos(dBodyID, dReal px, dReal py, dReal pz,ref dVector3 result);
 
 /**
  * @brief Get velocity vector in global coords of a relative point on body.
  * @ingroup bodies
  * @param result will contain the result.
  */
-void dBodyGetRelPointVel(dBodyID, dReal px, dReal py, dReal pz, dVector3 result);
+void dBodyGetRelPointVel(dBodyID, dReal px, dReal py, dReal pz, ref dVector3 result);
 
 /**
  * @brief Get velocity vector in global coords of a globally
@@ -1118,7 +1118,7 @@ void dBodyGetRelPointVel(dBodyID, dReal px, dReal py, dReal pz, dVector3 result)
  * @ingroup bodies
  * @param result will contain the result.
  */
-void dBodyGetPointVel(dBodyID, dReal px, dReal py, dReal pz, dVector3 result);
+void dBodyGetPointVel(dBodyID, dReal px, dReal py, dReal pz, ref dVector3 result);
 
 /**
  * @brief takes a point in global coordinates and returns
@@ -1128,21 +1128,21 @@ void dBodyGetPointVel(dBodyID, dReal px, dReal py, dReal pz, dVector3 result);
  * @ingroup bodies
  * @param result will contain the result.
  */
-void dBodyGetPosRelPoint(dBodyID, dReal px, dReal py, dReal pz, dVector3 result);
+void dBodyGetPosRelPoint(dBodyID, dReal px, dReal py, dReal pz, ref dVector3 result);
 
 /**
  * @brief Convert from local to world coordinates.
  * @ingroup bodies
  * @param result will contain the result.
  */
-void dBodyVectorToWorld(dBodyID, dReal px, dReal py, dReal pz, dVector3 result);
+void dBodyVectorToWorld(dBodyID, dReal px, dReal py, dReal pz, ref dVector3 result);
 
 /**
  * @brief Convert from world to local coordinates.
  * @ingroup bodies
  * @param result will contain the result.
  */
-void dBodyVectorFromWorld(dBodyID, dReal px, dReal py, dReal pz, dVector3 result);
+void dBodyVectorFromWorld(dBodyID, dReal px, dReal py, dReal pz, ref dVector3 result);
 
 /**
  * @brief controls the way a body's orientation is updated at each timestep.
@@ -1193,7 +1193,7 @@ int dBodyGetFiniteRotationMode(dBodyID);
  * @param result will contain the axis.
  * @ingroup bodies
  */
-void dBodyGetFiniteRotationAxis(dBodyID, dVector3 result);
+void dBodyGetFiniteRotationAxis(dBodyID, ref dVector3 result);
 
 /**
  * @brief Get the number of joints that are attached to this body.
@@ -2066,7 +2066,7 @@ void dJointSetPUAnchor(dJointID, dReal x, dReal y, dReal z);
  * Ex:
  * <PRE>
  * dReal offset = 3;
- * dVector3 axis;
+ * ref dVector3 axis;
  * dJointGetPUAxis(jId, axis);
  * dJointSetPUAnchor(jId, 0, 0, 0);
  * // If you request the position you will have: dJointGetPUPosition(jId) == 0
@@ -2157,7 +2157,7 @@ void dJointSetPistonAnchor(dJointID, dReal x, dReal y, dReal z);
  * Ex:
  * <PRE>
  * dReal offset = 3;
- * dVector3 axis;
+ * ref dVector3 axis;
  * dJointGetPistonAxis(jId, axis);
  * dJointSetPistonAnchor(jId, 0, 0, 0);
  * // If you request the position you will have: dJointGetPistonPosition(jId) == 0
@@ -2312,7 +2312,7 @@ void dJointSetPlane2DAngleParam(dJointID, int parameter, dReal value);
  * This returns the point on body 1. If the joint is perfectly satisfied,
  * this will be the same as the point on body 2.
  */
-void dJointGetBallAnchor(dJointID, dVector3 result);
+void dJointGetBallAnchor(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the joint anchor point, in world coordinates.
@@ -2324,7 +2324,7 @@ void dJointGetBallAnchor(dJointID, dVector3 result);
  * within roundoff errors. dJointGetBallAnchor2() can be used, along with
  * dJointGetBallAnchor(), to see how far the joint has come apart.
  */
-void dJointGetBallAnchor2(dJointID, dVector3 result);
+void dJointGetBallAnchor2(dJointID, ref dVector3 result);
 
 /**
  * @brief get joint parameter
@@ -2339,7 +2339,7 @@ dReal dJointGetBallParam(dJointID, int parameter);
  * this will be the same as the point on body 2.
  * @ingroup joints
  */
-void dJointGetHingeAnchor(dJointID, dVector3 result);
+void dJointGetHingeAnchor(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the joint anchor point, in world coordinates.
@@ -2349,13 +2349,13 @@ void dJointGetHingeAnchor(dJointID, dVector3 result);
  * This can be used, for example, to see how far the joint has come apart.
  * @ingroup joints
  */
-void dJointGetHingeAnchor2(dJointID, dVector3 result);
+void dJointGetHingeAnchor2(dJointID, ref dVector3 result);
 
 /**
  * @brief get axis
  * @ingroup joints
  */
-void dJointGetHingeAxis(dJointID, dVector3 result);
+void dJointGetHingeAxis(dJointID, ref dVector3 result);
 
 /**
  * @brief get joint parameter
@@ -2406,7 +2406,7 @@ dReal dJointGetSliderPositionRate(dJointID);
  * @brief Get the slider axis
  * @ingroup joints
  */
-void dJointGetSliderAxis(dJointID, dVector3 result);
+void dJointGetSliderAxis(dJointID, ref dVector3 result);
 
 /**
  * @brief get joint parameter
@@ -2420,7 +2420,7 @@ dReal dJointGetSliderParam(dJointID, int parameter);
  * this will be the same as the point on body 2.
  * @ingroup joints
  */
-void dJointGetHinge2Anchor(dJointID, dVector3 result);
+void dJointGetHinge2Anchor(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the joint anchor point, in world coordinates.
@@ -2430,19 +2430,19 @@ void dJointGetHinge2Anchor(dJointID, dVector3 result);
  * This can be used, for example, to see how far the joint has come apart.
  * @ingroup joints
  */
-void dJointGetHinge2Anchor2(dJointID, dVector3 result);
+void dJointGetHinge2Anchor2(dJointID, ref dVector3 result);
 
 /**
  * @brief Get joint axis
  * @ingroup joints
  */
-void dJointGetHinge2Axis1(dJointID, dVector3 result);
+void dJointGetHinge2Axis1(dJointID, ref dVector3 result);
 
 /**
  * @brief Get joint axis
  * @ingroup joints
  */
-void dJointGetHinge2Axis2(dJointID, dVector3 result);
+void dJointGetHinge2Axis2(dJointID, ref dVector3 result);
 
 /**
  * @brief get joint parameter
@@ -2474,7 +2474,7 @@ dReal dJointGetHinge2Angle2Rate(dJointID);
  * this will be the same as the point on body 2.
  * @ingroup joints
  */
-void dJointGetUniversalAnchor(dJointID, dVector3 result);
+void dJointGetUniversalAnchor(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the joint anchor point, in world coordinates.
@@ -2489,19 +2489,19 @@ void dJointGetUniversalAnchor(dJointID, dVector3 result);
  * dJointGetUniversalAnchor(), to see how far the joint has come apart.
  * @ingroup joints
  */
-void dJointGetUniversalAnchor2(dJointID, dVector3 result);
+void dJointGetUniversalAnchor2(dJointID, ref dVector3 result);
 
 /**
  * @brief Get axis
  * @ingroup joints
  */
-void dJointGetUniversalAxis1(dJointID, dVector3 result);
+void dJointGetUniversalAxis1(dJointID, ref dVector3 result);
 
 /**
  * @brief Get axis
  * @ingroup joints
  */
-void dJointGetUniversalAxis2(dJointID, dVector3 result);
+void dJointGetUniversalAxis2(dJointID, ref dVector3 result);
 
 
 /**
@@ -2555,7 +2555,7 @@ dReal dJointGetUniversalAngle2Rate(dJointID);
  * this will be the same as the point on body 2.
  * @ingroup joints
  */
-void dJointGetPRAnchor(dJointID, dVector3 result);
+void dJointGetPRAnchor(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the PR linear position (i.e. the prismatic's extension)
@@ -2599,13 +2599,13 @@ dReal dJointGetPRAngleRate(dJointID);
  * @brief Get the prismatic axis
  * @ingroup joints
  */
-void dJointGetPRAxis1(dJointID, dVector3 result);
+void dJointGetPRAxis1(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the Rotoide axis
  * @ingroup joints
  */
-void dJointGetPRAxis2(dJointID, dVector3 result);
+void dJointGetPRAxis2(dJointID, ref dVector3 result);
 
 /**
  * @brief get joint parameter
@@ -2621,7 +2621,7 @@ dReal dJointGetPRParam(dJointID, int parameter);
  * this will be the same as the point on body 2.
  * @ingroup joints
  */
-void dJointGetPUAnchor(dJointID, dVector3 result);
+void dJointGetPUAnchor(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the PU linear position (i.e. the prismatic's extension)
@@ -2647,19 +2647,19 @@ dReal dJointGetPUPositionRate(dJointID);
  * @brief Get the first axis of the universal component of the joint
  * @ingroup joints
  */
-void dJointGetPUAxis1(dJointID, dVector3 result);
+void dJointGetPUAxis1(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the second axis of the Universal component of the joint
  * @ingroup joints
  */
-void dJointGetPUAxis2(dJointID, dVector3 result);
+void dJointGetPUAxis2(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the prismatic axis
  * @ingroup joints
  */
-void dJointGetPUAxis3(dJointID, dVector3 result);
+void dJointGetPUAxis3(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the prismatic axis
@@ -2668,7 +2668,7 @@ void dJointGetPUAxis3(dJointID, dVector3 result);
  * @note This function was added for convenience it is the same as
  *       dJointGetPUAxis3
  */
-void dJointGetPUAxisP(dJointID id, dVector3 result);
+void dJointGetPUAxisP(dJointID id, ref dVector3 result);
 
 
 
@@ -2763,7 +2763,7 @@ dReal dJointGetPistonAngleRate(dJointID);
  *
  * @ingroup joints
  */
-void dJointGetPistonAnchor(dJointID, dVector3 result);
+void dJointGetPistonAnchor(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the joint anchor w.r.t. body 2
@@ -2778,13 +2778,13 @@ void dJointGetPistonAnchor(dJointID, dVector3 result);
  *
  * @ingroup joints
  */
-void dJointGetPistonAnchor2(dJointID, dVector3 result);
+void dJointGetPistonAnchor2(dJointID, ref dVector3 result);
 
 /**
  * @brief Get the prismatic axis (This is also the rotoide axis.
  * @ingroup joints
  */
-void dJointGetPistonAxis(dJointID, dVector3 result);
+void dJointGetPistonAxis(dJointID, ref dVector3 result);
 
 /**
  * @brief get joint parameter
@@ -2812,7 +2812,7 @@ int dJointGetAMotorNumAxes(dJointID);
  * \li 2: The axis is anchored to the second body.
  * @ingroup joints
  */
-void dJointGetAMotorAxis(dJointID, int anum, dVector3 result);
+void dJointGetAMotorAxis(dJointID, int anum, ref dVector3 result);
 
 /**
  * @brief Get axis
@@ -2883,7 +2883,7 @@ int dJointGetLMotorNumAxes(dJointID);
  * @brief Get axis.
  * @ingroup joints
  */
-void dJointGetLMotorAxis(dJointID, int anum, dVector3 result);
+void dJointGetLMotorAxis(dJointID, int anum, ref dVector3 result);
 
 /**
  * @brief get joint parameter
